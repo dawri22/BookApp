@@ -1,0 +1,23 @@
+<div class="row justify-content-center mb-4">
+  <div class="col-4">
+    <div class="card shadow-sm">
+      <div class="card-header bg-danger text-light">
+        <h4>Estas seguro que deseas borrar el libro {{book.title}}?</h4>
+      </div>
+      <div class="card-body">
+        <form method="post" action="/books/delete">
+
+          <input type="hidden" name="bookId" value="{{book.id}}" />
+
+          <div class="container-fluid text-center">
+            <button
+              type="submit"
+              class="btn btn-primary shadow-sm"
+            >Borrar</button>
+            <a href="/books" class="btn btn-secondary shadow-sm">Atras</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

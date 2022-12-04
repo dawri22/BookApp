@@ -1,0 +1,60 @@
+<main>
+  <div class="row justify-content-center mb-4">
+        <div class="col-5">
+        <div class="card shadow-sm">
+        <div class="card-header {{#if editMode}}bg-warning{{else}}bg-info{{/if}} text-light">
+          <h4>{{#if editMode}}Editar Autor{{else}}Crear a Autor{{/if}}</h4>
+        </div>
+        <div class="card-body">
+          <form method="post" action="{{#if editMode}}/authors/edit{{else}}/authors/create{{/if}}">
+
+            {{#if editMode}}
+                <input type="hidden" name="authorId" value="{{author.id}}">
+            {{/if}}
+
+            <div class="form-group row mb-3">
+                <div class="col">
+                    <label for="name" class="form-label"><strong
+                        >Nombre:</strong></label>
+                    <input
+                        required
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Escribe el nombre"
+                        class="form-control shadow-sm"
+                        value="{{#if editMode}}{{author.name}}{{/if}}"
+                    />
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <div class="col">
+                    <label for="email" class="form-label"><strong
+                        >Correo:</strong></label>
+                    <input
+                        required
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Escribe el correo"
+                        class="form-control shadow-sm"
+                        value="{{#if editMode}}{{author.email}}{{/if}}"
+                    />
+                </div>
+            </div>
+
+            <div class="container-fluid text-center mt-4">
+                <button
+                id="btn-save-autor"
+                type="submit"
+                class="btn btn-primary shadow-sm"
+                >Guardar</button>
+                <a href="/authors" class="btn btn-secondary shadow-sm">Atras</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,73 @@
+<main>
+  <div class="row justify-content-center mb-4">
+        <div class="col-5">
+        <div class="card shadow-sm">
+        <div class="card-header {{#if editMode}}bg-info{{else}}bg-success{{/if}} text-light">
+          <h4>{{#if editMode}}Editar Editorial{{else}}Crear a Editorial{{/if}}</h4>
+        </div>
+        <div class="card-body">
+          <form method="post" action="{{#if editMode}}/editorials/edit{{else}}/editorials/create{{/if}}">
+
+            {{#if editMode}}
+                <input type="hidden" name="editorialId" value="{{editorial.id}}">
+            {{/if}}
+
+            <div class="form-group row mb-3">
+                <div class="col">
+                    <label for="name" class="form-label"><strong
+                        >Nombre:</strong></label>
+                    <input
+                        required
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Escribe el nombre"
+                        class="form-control shadow-sm"
+                        value="{{#if editMode}}{{editorial.name}}{{/if}}"
+                    />
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <div class="col">
+                    <label for="phone" class="form-label"><strong
+                        >Telefono:</strong></label>
+                    <input
+                        required
+                        type="number"
+                        id="phone"
+                        name="phone"
+                        placeholder="Escribe el telefono"
+                        class="form-control shadow-sm"
+                        value="{{#if editMode}}{{editorial.phone}}{{/if}}"
+                    />
+                </div>
+                <div class="col">
+                    <label for="country" class="form-label"><strong
+                        >Pais:</strong></label>
+                    <input
+                        required
+                        type="text"
+                        id="country"
+                        name="country"
+                        placeholder="Escribe el pais"
+                        class="form-control shadow-sm"
+                        value="{{#if editMode}}{{editorial.country}}{{/if}}"
+                    />
+                </div>
+            </div>
+
+            <div class="container-fluid text-center mt-4">
+                <button
+                id="btn-save-editorial"
+                type="submit"
+                class="btn btn-primary shadow-sm"
+                >Guardar</button>
+                <a href="/editorials" class="btn btn-secondary shadow-sm">Atras</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

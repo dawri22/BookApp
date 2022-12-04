@@ -1,0 +1,130 @@
+<main>
+    <div class="row justify-content-center mb-4">
+        <div class="col-{{#if editMode}}7{{else}}5{{/if}}">
+            {{#if hasRelations}}
+            <div class="card shadow-sm">
+                <div class="card-header {{#if editMode}}bg-warning{{else}}bg-info{{/if}} text-light">
+                    <h4>{{#if editMode}}Editar Libros{{else}}Crear un Libro{{/if}}</h4>
+                </div>
+                <div class="card-body">
+                    <form enctype="multipart/form-data" method="post"
+                        action="{{#if editMode}}/books/edit{{else}}/books/create{{/if}}">
+
+                        <div class="row">
+                            {{#if editMode}}
+                                <div class="col">
+                                    <input type="hidden" name="bookId" value="{{book.id}}">
+
+                                    <div class="form-group row mb-3">
+                                        <div class="container-fluid text-center">
+                                            <img src="{{book.imagePath}}" class="img-fluid img-thumbnail" width="300px" alt="{{book.title}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/if}}
+                            <div class="col">
+                                <div class="form-group row mb-3">
+                                    <div class="col">
+                                        <label for="title" class="form-label"><strong>Titulo:</strong></label>
+                                        <input required type="text" id="title" name="title"
+                                            placeholder="Escribe el titulo" class="form-control shadow-sm"
+                                            value="{{#if editMode}}{{book.title}}{{/if}}" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <div class="col">
+                                        <label for="imageFile" class="form-label"><strong>Selecciona una imagen</strong></label>
+                                        <input {{#if editMode}}{{else}}required{{/if}} type="file" class="form-control" id="imageFile" name="image" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <div class="col">
+                                        <label for="category" class="form-label"><strong>Categoria:</strong></label>
+                                        <select required id="category" name="categoryId" class="form-select shadow-sm">
+                                            <option value="" {{#if editMode}}{{else}}selected{{/if}}>Selecciona una opcion
+                                            </option>
+
+                                            {{#each categories as |category|}}
+                                            {{#if (equalValue category.id ../book.categoryId )}}
+                                            <option selected value="{{category.id}}">{{category.name}}</option>
+                                            {{else}}
+                                            <option value="{{category.id}}">{{category.name}}</option>
+                                            {{/if}}
+                                            {{/each}}
+                                        </select>
+                                    </div>
+
+                                    <div class="col">
+                                        <label for="publicationYear" class="form-label"><strong>Año de Publicacion:</strong></label>
+                                        <input required type="number" id="publicationYear" name="publicationYear"
+                                            placeholder="Escribe el año de publicacion" class="form-control shadow-sm"
+                                            value="{{#if editMode}}{{book.publicationYear}}{{/if}}" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <div class="col">
+                                        <label for="author" class="form-label"><strong>Autor:</strong></label>
+                                        <select required id="author" name="authorId" class="form-select shadow-sm">
+                                            <option value="" {{#if editMode}}{{else}}selected{{/if}}>Selecciona una opcion
+                                            </option>
+
+                                            {{#each authors as |author|}}
+                                            {{#if (equalValue author.id ../book.authorId )}}
+                                            <option selected value="{{author.id}}">{{author.name}}</option>
+                                            {{else}}
+                                            <option value="{{author.id}}">{{author.name}}</option>
+                                            {{/if}}
+                                            {{/each}}
+                                        </select>
+                                    </div>
+
+                                    <div class="col">
+                                        <label for="editorial" class="form-label"><strong>Editorial:</strong></label>
+                                        <select required id="editorial" name="editorialId"
+                                            class="form-select shadow-sm">
+                                            <option value="" {{#if editMode}}{{else}}selected{{/if}}>Selecciona una opcion
+                                            </option>
+
+                                            {{#each editorials as |editorial|}}
+                                            {{#if (equalValue editorial.id ../book.editorialId )}}
+                                            <option selected value="{{editorial.id}}">{{editorial.name}}</option>
+                                            {{else}}
+                                            <option value="{{editorial.id}}">{{editorial.name}}</option>
+                                            {{/if}}
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="container-fluid text-center mt-4">
+                                    <button type="submit" class="btn btn-primary shadow-sm">Guardar</button>
+                                    <a href="/books" class="btn btn-secondary shadow-sm">Atras</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </form>
+                </div>
+            </div>
+            {{else}}
+            <div class="container-fluid text-center m-5">
+                {{#if hasCategories}}
+                <h4>No Categories created!</h4>
+                {{/if}}
+                {{#if hasAuthors}}
+                <h4>No Authors created!</h4>
+                {{/if}}
+                {{#if hasEditorials}}
+                <h4>No Editorials created!</h4>
+                {{/if}}
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</main>

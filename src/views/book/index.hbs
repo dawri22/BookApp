@@ -1,0 +1,86 @@
+<main>
+  <div class="row justify-content-center mb-4">
+    <div class="col-11">
+      <div class="card shadow-sm">
+        <div class="card-header bg-info bg-opacity-75">
+          <h3 class="text-white">
+          Mantinimiento de Libros
+            <a class="btn btn-success shadow-sm" href="/books/create">Crear</a>
+          </h3>
+
+        </div>
+        {{#if hasBooks}}
+          <div class="card-body">
+            <div class="row">
+
+              {{#each books as |book|}}
+                <div class="col-3 mb-3">
+                  <div class="card shadow-sm h-100">
+                    <div class="text-center mt-3">
+                      <img
+                        src="{{book.imagePath}}"
+                        alt="{{book.name}}"
+                        class="img-thumbnail img-fluid h-100"
+                        width="200px"
+                      />
+                    </div>
+                    <div class="card-body">
+                      <h4>{{book.title}}</h4>
+                      <div>
+                        <div>
+                          <label class="card-subtitle text-muted">Año de Publicacion:</label>
+                          <span class="">{{book.publicationYear}}</span>
+                        </div>
+                        <div>
+                          <label
+                            class="card-subtitle text-muted"
+                          >Categoria:</label>
+                          <span
+                            class=""
+                          >{{book.category.dataValues.name}}</span>
+                        </div>
+                        <div>
+                          <label
+                            class="card-subtitle text-muted"
+                          >Autor:</label>
+                          <span class="">{{book.author.dataValues.name}}</span>
+                        </div>
+                        <div>
+                          <label
+                            class="card-subtitle text-muted"
+                          >Editorial:</label>
+                          <span
+                            class=""
+                          >{{book.editorial.dataValues.name}}</span>
+                        </div>
+                        <div
+                          class="mt-3 d-flex justify-content-between align-items-center"
+                        >
+                          <div class="btn-group">
+                            <a
+                              href="/books/edit/{{book.id}}"
+                              class="btn btn-sm btn-outline-warning"
+                            >Editar</a>
+                            <a
+                              href="/books/delete/{{book.id}}"
+                              class="btn btn-sm btn-outline-danger"
+                            >Borrar</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        {{else}}
+          <div class="container-fluid text-center m-5">
+            <h4>No hay libros creados!</h4>
+            <p>Empieza a crear una .</p>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</main>

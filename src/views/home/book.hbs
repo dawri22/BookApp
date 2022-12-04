@@ -1,0 +1,45 @@
+<div class="row justify-content-center mb-4">
+  <div class="col-5">
+    <div class="card shadow-sm">
+      <div class="card-header bg-dark text-light">
+        <h4>{{book.title}}</h4>
+      </div>
+      <div class="card-body">
+        <input type="hidden" for="Id" />
+
+        <div class="row">
+          <div class="col">
+            <img
+              src="{{book.imagePath}}"
+              alt="{{book.title}}"
+              class="img-fluid img-thumbnail shadow-sm"
+              width="350px"
+            />
+          </div>
+
+          <div class="col">
+            <div>
+              <h5>Año de Publicacion</h5>
+              <p>{{book.publicationYear}}</p>
+            </div>
+            <div>
+              <h5>Categoria</h5>
+              <p>{{book.category.dataValues.name}}</p>
+            </div>
+            <div>
+              <h5>Autor</h5>
+              <p>{{book.author.dataValues.name}}</p>
+            </div>
+            <div>
+              <h5>Editorial</h5>
+              <div>{{book.editorial.dataValues.name}}</div>
+              <div>Telefono: {{book.editorial.dataValues.phone}}</div>
+              <div>Pais: {{book.editorial.dataValues.country}}</div>
+              <a href="/" class="btn btn-secondary shadow-sm">Atras</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

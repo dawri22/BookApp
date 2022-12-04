@@ -1,0 +1,47 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{pageTitle}} - BookApp</title>
+    <link rel="stylesheet" href="/assets/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <header>
+      <nav class="navbar navbar-expand navbar-dark bg-info">
+        <a class="navbar-brand ms-4" href="/">BookApp</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link {{#if homeActive}}active{{/if}}" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{#if booksActive}}active{{/if}}" aria-current="page" href="/books">Libros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{#if categoriesActive}}active{{/if}}" aria-current="page" href="/categories">Categorias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{#if authorsActive}}active{{/if}}" aria-current="page" href="/authors">Autores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{#if editorialsActive}}active{{/if}}" aria-current="page" href="/editorials">Editoriales</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-fluid mt-4">
+      {{{body}}}
+    </main>
+
+    <footer class="border-top bg-white pt-3 footer text-muted mt-auto">
+      <div class="container-fluid text-center">
+      </div>
+    </footer>
+    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/scripts.js"></script>
+  </body>
+</html>

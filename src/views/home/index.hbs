@@ -1,0 +1,123 @@
+<main>
+  <div class="row justify-content-center mb-4">
+    <div class="col-2">
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark">
+          <h4 class="text-white">Filtrar Por:</h4>
+        </div>
+        <div class="card-body">
+          <form method="post" action="/home/filter">
+            <div class="form-group">
+              <label><strong>Titulo:</strong></label>
+              <div><input
+                  class="form-control w-100"
+                  type="text"
+                  placeholder="Escribe el titulo"
+                  name="title"
+                  id="title"
+                  value=""
+                /></div>
+            </div>
+            <hr class="my-3" />
+
+            <div class="form-group">
+              <label><strong>Categoria:</strong></label>
+              {{#each categories as |category|}}
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    value="{{category.id}}"
+                    type="checkbox"
+                    name="categoryId"
+                    id="category-{{category.id}}"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="category-{{id}}"
+                  >{{category.name}}</label>
+                </div>
+              {{/each}}
+            </div>
+            <hr class="my-3" />
+
+            <div class="text-center px-xl-3">
+              <button
+                class="btn btn-primary shadow-sm btn-block"
+                type="submit"
+              >Filtrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-9">
+      <div class="card shadow-sm">
+        <div class="card-header bg-info bg-opacity-75">
+          <h3 class="text-white">Todos los Libros</h3>
+        </div>
+        {{#if hasBooks}}
+          <div class="card-body">
+            <div class="row">
+
+              {{#each books as |book|}}
+                <div class="col-3 mb-3">
+                  <a
+                    href="/home/{{book.id}}"
+                    class="text-decoration-none text-black"
+                  >
+                    <div class="card shadow-sm h-100">
+                      <img
+                        src="{{book.imagePath}}"
+                        class="img-thumbnail card-img-top"
+                        alt="{{book.name}}"
+                      />
+                      <div class="card-body">
+                        <h4>{{book.title}}</h4>
+                        <div>
+                          <div>
+                            <label class="card-subtitle text-muted">Año
+                              de Publicacion:</label>
+                            <span class="">{{book.publicationYear}}</span>
+                          </div>
+                          <div>
+                            <label
+                              class="card-subtitle text-muted"
+                            >Categoria:</label>
+                            <span
+                              class=""
+                            >{{book.category.dataValues.name}}</span>
+                          </div>
+                          <div>
+                            <label
+                              class="card-subtitle text-muted"
+                            >Autor:</label>
+                            <span
+                              class=""
+                            >{{book.author.dataValues.name}}</span>
+                          </div>
+                          <div>
+                            <label
+                              class="card-subtitle text-muted"
+                            >Editorial:</label>
+                            <span
+                              class=""
+                            >{{book.editorial.dataValues.name}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        {{else}}
+          <div class="container-fluid text-center m-5">
+            <h4>No se encontraron libros!</h4>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</main>

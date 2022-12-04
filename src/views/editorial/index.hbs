@@ -1,0 +1,72 @@
+<main>
+  <div class="row justify-content-center">
+    <div class="col-11">
+      <div class="card shadow-sm">
+        <div class="card-header bg-info bg-opacity-75">
+          <h3 class="text-white">
+            Mantenimiento de Editoriales
+            <a
+              id="btn-editorial-save"
+              class="btn btn-success shadow-sm"
+              href="/editorials/create"
+            >Crear</a>
+          </h3>
+
+        </div>
+        {{#if hasEditorials}}
+          <div class="card-body">
+            <div class="row">
+
+              {{#each editorials as |editorial|}}
+                <div class="col-3 mb-3">
+                  <div class="card shadow-sm h-100">
+                    <div class="card-body">
+
+                      <h4>{{editorial.name}}</h4>
+                      <div>
+                        <div>
+                          <label class="card-subtitle text-muted">Telefono:</label>
+                          <span class="">{{editorial.phone}}</span>
+                        </div>
+                        <div>
+                          <label
+                            class="card-subtitle text-muted"
+                          >Pais:</label>
+                          <span class="">{{editorial.country}}</span>
+                        </div>
+                        <div>
+                          <label class="card-subtitle text-muted">Libros:</label>
+                          <span class="">{{editorial.count}}</span>
+                        </div>
+                      </div>
+                      <div
+                        class="mt-3 d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group">
+                          <a
+                            href="/editorials/edit/{{editorial.id}}"
+                            class="btn btn-sm btn-outline-warning"
+                          >Editar</a>
+                          <a
+                            href="/editorials/delete/{{editorial.id}}"
+                            class="btn btn-sm btn-outline-danger"
+                          >Borrar</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              {{/each}}
+            </div>
+          </div>
+        {{else}}
+          <div class="container-fluid text-center m-5">
+            <h4>No hay Editoriales Creados!</h4>
+            <p>Empezar a crear uno.</p>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</main>
